@@ -7,7 +7,7 @@ import SearchForm from './SearchForm';
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [characterList, setCharacterList] = useState([])
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState();
   const [searchResults, setSearchResults] = useState(characterList);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function CharacterList() {
     .get('https://rickandmortyapi.com/api/character/')
     .then(response =>{
       setCharacterList(response.data.results);
-      console.log('characterList',response.data.results);
+      console.log('characterListinaxios',response.data.results);
     })
     .catch(err => {
       console.log('error:', err)
@@ -38,9 +38,10 @@ export default function CharacterList() {
   return (
     <section className="character-list">
       <SearchForm key={characterList.id} charList={characterList} searchTerm={searchTerm} setSearchTerm = {setSearchTerm} searchResults={searchResults} setSearchResults={setSearchResults}/>
-      {/* {characterList.map(character=>(
+      
+      {characterList.map(character=>(
         <CharacterCard key={character.id} name={character.name} image={character.image}/>
-      ))} */}
+      ))}
       
     </section>
   );

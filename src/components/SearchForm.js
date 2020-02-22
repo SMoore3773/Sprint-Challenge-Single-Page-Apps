@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from "react";
 import CharacterCard from './CharacterCard';
+import styled from 'styled-components';
 
+const Ul = styled.ul`
+display:flex;
+flex-direction:column;
+justify-content:center;
+list-style-type:none;
+width:100%;
+`
+const Li = styled.li`
+width:100%;
+`
 export default function SearchForm(props) {
 
 
- console.log('searchformprops',props)
+//  console.log('searchformprops',props)
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(props.charList);
 
@@ -14,11 +25,12 @@ useEffect(()=>{
   });
   setSearchResults(results);
 },[searchTerm]);
+
 const handleChange = event => {
   setSearchTerm(event.target.value)
 };
-console.log('searchterm',searchTerm)
-console.log('searchresults',searchResults)
+// console.log('searchterm',searchTerm)
+// console.log('searchresults',searchResults)
   return (
     <section className="search-form">
     <form>
@@ -32,11 +44,11 @@ console.log('searchresults',searchResults)
         onChange={handleChange}
       />
     </form>
-    <ul>
+    <Ul>
       {searchResults.map(char => {
-        return <li key={char.id}><CharacterCard key={char.id} name={char.name} image={char.image}/></li>
+        return <Li key={char}><CharacterCard key={char.id} name={char.name} image={char.image}/></Li>
       })}
-    </ul>
+    </Ul>
     </section>
   );
 }
