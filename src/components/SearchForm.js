@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function SearchForm() {
- 
+export default function SearchForm(props) {
+ console.log('searchformprops',props)
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState(props.name);
+  // useEffect(() =>{
+  //   const results = 
+  // })
+
   return (
     <section className="search-form">
-     // Add a search form here
+    <form>
+     <label htmlFor='name'>Search:</label>
+      <input
+        id='name'
+        type='text'
+        name='testfield'
+        placeholder='Search Characters'
+      />
+    </form>
     </section>
   );
 }

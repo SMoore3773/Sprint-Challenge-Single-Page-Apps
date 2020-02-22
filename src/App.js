@@ -10,6 +10,7 @@ export default function App() {
       <Header />
       <NavLink to='/'className='navButton'>Home</NavLink>
       <NavLink to='/CharacterList' className='navButton'>Character List</NavLink>
+      <NavLink to='/SearchForm' className='navButton'>Search Characters</NavLink>
       <Route exact path='/' component={WelcomePage}/>
       <Route path='/CharacterList' component={CharacterList}/>
     </main>

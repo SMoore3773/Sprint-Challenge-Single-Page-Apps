@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
-import CharacterCard from './CharacterCard'
+import axios from 'axios';
+import CharacterCard from './CharacterCard';
+import SearchForm from './SearchForm';
 
 
 export default function CharacterList() {
@@ -14,7 +15,7 @@ export default function CharacterList() {
     .get('https://rickandmortyapi.com/api/character/')
     .then(response =>{
       setCharacterList(response.data.results);
-      console.log('characterList',characterList);
+      console.log('characterList',response.data.results);
     })
     .catch(err => {
       console.log('error:', err)
@@ -24,6 +25,7 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
+      <SearchForm key={characterList.id} charList={characterList}/>
       {characterList.map(character=>(
         <CharacterCard key={character.id} name={character.name} image={character.image}/>
       ))}
